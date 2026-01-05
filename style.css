@@ -378,6 +378,108 @@ select,
     text-shadow: none;
 }
 
+/* 編碼區塊 */
+.code-block {
+    background-color: var(--color-gray-light);
+    border: 2px solid var(--color-black);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    font-family: monospace;
+}
+
+.code-block code {
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+}
+
+/* 編號列表 */
+.operation-list.numbered {
+    list-style: decimal;
+    padding-left: var(--spacing-lg);
+}
+
+.operation-list.numbered li {
+    padding-left: var(--spacing-sm);
+}
+
+.operation-list.numbered li::before {
+    display: none;
+}
+
+.operation-list.nested {
+    margin-top: var(--spacing-sm);
+    padding-left: var(--spacing-lg);
+}
+
+/* FAQ 列表 */
+.faq-list {
+    margin: var(--spacing-lg) 0;
+}
+
+.faq-item {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-black);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.faq-answer {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: var(--color-black);
+}
+
+/* 連結區塊 */
+.link-section {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    border-top: var(--line-thickness) solid var(--color-black);
+    border-bottom: var(--line-thickness) solid var(--color-black);
+}
+
+/* 架構圖 */
+.architecture-diagram {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.arch-item {
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-black);
+    background-color: var(--color-white);
+}
+
+.arch-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* 封面副標題 */
+.cover-subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+    color: var(--color-black);
+    margin-top: var(--spacing-md);
+    text-align: center;
+}
+
 /* 響應式設計 - 手機版優先 */
 @media (max-width: 768px) {
     .cover-section {
@@ -416,6 +518,15 @@ select,
     .image-block,
     .cover-image-placeholder {
         aspect-ratio: 4 / 3;
+    }
+    
+    .architecture-diagram {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-block {
+        padding: var(--spacing-sm);
+        font-size: 0.875rem;
     }
 }
 

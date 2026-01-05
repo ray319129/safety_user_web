@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動安全警示車 - 詳細技術說明</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 封面頁 -->
+    <section class="cover-section">
+        <div class="cover-content">
+            <h1 class="cover-title">詳細技術說明</h1>
+            <div class="cover-divider"></div>
+            <p class="cover-subtitle">自動安全警示車系統</p>
+        </div>
+    </section>
+
+    <!-- 系統架構 -->
+    <section class="content-section">
+        <h2 class="section-title">系統架構</h2>
+        <div class="text-content">
+            <p class="leading-relaxed">
+                系統由三個主要部分組成：車載端（Raspberry Pi）、後端伺服器（Flask + MongoDB）與前端監控網頁。
+            </p>
+            <div class="architecture-diagram">
+                <div class="arch-item">
+                    <h3 class="arch-title">車載端</h3>
+                    <ul class="operation-list">
+                        <li>Raspberry Pi 4 控制平台</li>
+                        <li>GPS 定位模組</li>
+                        <li>視覺辨識系統</li>
+                        <li>馬達與伺服控制</li>
+                        <li>警示系統（LED、警示牌）</li>
+                    </ul>
+                </div>
+                <div class="arch-item">
+                    <h3 class="arch-title">後端伺服器</h3>
+                    <ul class="operation-list">
+                        <li>Flask REST API</li>
+                        <li>MongoDB 資料庫</li>
+                        <li>資料處理與儲存</li>
+                        <li>影像串流代理</li>
+                    </ul>
+                </div>
+                <div class="arch-item">
+                    <h3 class="arch-title">前端監控</h3>
+                    <ul class="operation-list">
+                        <li>地圖顯示（Leaflet）</li>
+                        <li>即時影像串流</li>
+                        <li>事故列表管理</li>
+                        <li>管理員介面</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能流程 -->
+    <section class="content-section">
+        <h2 class="section-title">功能流程</h2>
+        <div class="text-content">
+            <ol class="operation-list numbered">
+                <li>GPS 初始化並取得事故位置（起點）</li>
+                <li>啟動視覺辨識模組</li>
+                <li>判斷道路類型（速限）並計算目標距離</li>
+                <li>開始移動（循環執行）：
+                    <ul class="operation-list nested">
+                        <li>視覺辨識偵測障礙物</li>
+                        <li>如有障礙物，計算避障路徑並執行避障</li>
+                        <li>GPS 計算累積距離</li>
+                        <li>檢查是否達到目標距離</li>
+                    </ul>
+                </li>
+                <li>到達目標距離後停止移動</li>
+                <li>升起警示牌（兩個伺服馬達）</li>
+                <li>LED 燈條自動啟動</li>
+                <li>上報事故資料到後端（GPS + 影像）</li>
+                <li>開始即時影像串流</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 技術規格 -->
+    <section class="content-section">
+        <h2 class="section-title">技術規格</h2>
+        <div class="spec-grid">
+            <div class="spec-item">
+                <h3 class="spec-label">控制平台</h3>
+                <p class="spec-value">Raspberry Pi 4</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">定位系統</h3>
+                <p class="spec-value">GPS NEO-M8 模組</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">視覺辨識</h3>
+                <p class="spec-value">OpenCV + YOLO</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">馬達控制</h3>
+                <p class="spec-value">L298N 驅動模組</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">警示系統</h3>
+                <p class="spec-value">伺服馬達 + LED 燈條</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">通訊協定</h3>
+                <p class="spec-value">HTTP REST API</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">資料庫</h3>
+                <p class="spec-value">MongoDB</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">後端框架</h3>
+                <p class="spec-value">Flask</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 硬體連接 -->
+    <section class="content-section">
+        <h2 class="section-title">硬體連接</h2>
+        <div class="text-content">
+            <h3 class="subsection-title">BMduino 連接</h3>
+            <ul class="operation-list">
+                <li>L298N 馬達驅動器連接至 BMduino</li>
+                <li>伺服馬達連接至 BMduino D4、D7</li>
+                <li>LED 燈條透過 MOSFET 連接至 BMduino D12</li>
+                <li>GPS 模組連接至 Raspberry Pi UART</li>
+                <li>攝影機透過 USB 連接至 Raspberry Pi</li>
+            </ul>
+            <p class="leading-relaxed">
+                詳細硬體連接說明請參考系統文件。
+            </p>
+        </div>
+    </section>
+
+    <!-- 安裝與配置 -->
+    <section class="content-section">
+        <h2 class="section-title">安裝與配置</h2>
+        
+        <div class="operation-section">
+            <h3 class="subsection-title">車載端配置</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    系統已預先配置完成，如需重新配置：
+                </p>
+                <ol class="operation-list numbered">
+                    <li>確認 Python 3 與必要套件已安裝</li>
+                    <li>設定環境變數檔案（.env）</li>
+                    <li>配置 GPS 序列埠與波特率</li>
+                    <li>設定後端 API 連線資訊</li>
+                    <li>確認攝影機索引設定</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">後端伺服器配置</h3>
+            <div class="text-content">
+                <ol class="operation-list numbered">
+                    <li>安裝 MongoDB 並啟動服務</li>
+                    <li>設定 Flask 環境變數</li>
+                    <li>配置資料庫連線</li>
+                    <li>設定管理員帳號密碼</li>
+                    <li>啟動 Flask 伺服器</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">前端配置</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    修改 app.js 中的 API_URL 與 VIDEO_STREAM_URL，指向正確的後端伺服器地址。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 詳細操作說明 -->
+    <section class="content-section">
+        <h2 class="section-title">詳細操作說明</h2>
+        
+        <div class="operation-section">
+            <h3 class="subsection-title">啟動車載系統</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    在樹莓派上執行：
+                </p>
+                <div class="code-block">
+                    <code>./start_vehicle.sh [速限]</code>
+                </div>
+                <p class="leading-relaxed">
+                    或手動執行：
+                </p>
+                <div class="code-block">
+                    <code>python3 main.py [速限]</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">啟動後端服務</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    在本機或伺服器上執行：
+                </p>
+                <div class="code-block">
+                    <code>python app.py</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">開啟監控網頁</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    在瀏覽器開啟前端網頁或透過 Ngrok URL 訪問。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 維護方法 -->
+    <section class="content-section">
+        <h2 class="section-title">維護方法</h2>
+        <div class="text-content">
+            <h3 class="subsection-title">日常檢查</h3>
+            <ul class="operation-list">
+                <li>定期檢查 GPS 模組定位功能</li>
+                <li>確認攝影機影像品質</li>
+                <li>檢查馬達與伺服運作正常</li>
+                <li>測試 LED 燈條亮度</li>
+                <li>確認網路連線穩定</li>
+            </ul>
+            
+            <h3 class="subsection-title">故障排除</h3>
+            <ul class="operation-list">
+                <li>GPS 無法定位：檢查模組連接與戶外環境</li>
+                <li>攝影機無法啟動：檢查 USB 連接與權限</li>
+                <li>馬達無法運作：檢查 BMduino 連線與電源</li>
+                <li>無法連線後端：檢查網路與 API 設定</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 系統限制 -->
+    <section class="content-section">
+        <h2 class="section-title">系統限制</h2>
+        <div class="text-content">
+            <ul class="operation-list">
+                <li>GPS 定位需要在戶外空曠處，首次定位可能需要 1-5 分鐘</li>
+                <li>視覺辨識在光線不足時準確度可能下降</li>
+                <li>移動速度受限於馬達功率與地面條件</li>
+                <li>影像串流品質受網路頻寬影響</li>
+                <li>系統需要穩定的電源供應</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 返回主頁 -->
+    <section class="content-section">
+        <div class="link-section">
+            <a href="index.html" class="btn">返回使用說明</a>
+        </div>
+    </section>
+
+    <!-- 輔助紋理 -->
+    <div class="texture-overlay"></div>
+</body>
+</html>

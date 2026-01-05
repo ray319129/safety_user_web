@@ -21,15 +21,12 @@
         </div>
     </section>
 
-    <!-- 產品理念 -->
+    <!-- 產品簡介 -->
     <section class="content-section">
-        <h2 class="section-title">產品理念</h2>
+        <h2 class="section-title">產品簡介</h2>
         <div class="text-content">
             <p class="leading-relaxed">
-                當發生交通事故時，系統會自動啟動安全警示流程。裝置將自動往後移動至安全距離，升起警示牌，並將事故資料與即時影像傳送到後端監控系統。
-            </p>
-            <p class="leading-relaxed">
-                透過 GPS 定位、視覺辨識與自動化控制，確保事故現場能夠快速建立安全警示，保護用路人安全。
+                自動安全警示車是一套完整的道路事故警示系統。當發生交通事故時，系統會自動啟動，將警示車移動至安全距離，升起警示牌，並將事故資訊即時傳送至監控中心。
             </p>
         </div>
         <div class="image-block">
@@ -37,33 +34,98 @@
         </div>
     </section>
 
-    <!-- 設計重點說明 -->
+    <!-- 快速開始 -->
     <section class="content-section">
-        <h2 class="section-title">系統功能</h2>
+        <h2 class="section-title">快速開始</h2>
+        <div class="operation-section">
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    系統已完整配置，您只需按照以下步驟操作：
+                </p>
+                <ol class="operation-list numbered">
+                    <li>確認設備電源已連接並開啟</li>
+                    <li>確認 GPS 模組已定位（等待約 30-60 秒）</li>
+                    <li>確認攝影機正常運作</li>
+                    <li>在事故現場啟動系統</li>
+                    <li>系統將自動完成後續流程</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- 如何使用 -->
+    <section class="content-section">
+        <h2 class="section-title">如何使用</h2>
+        
+        <div class="operation-section">
+            <h3 class="subsection-title">啟動系統</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    在事故發生後，於樹莓派上執行啟動指令：
+                </p>
+                <div class="code-block">
+                    <code>./start_vehicle.sh [速限]</code>
+                </div>
+                <p class="leading-relaxed">
+                    例如：城市道路速限 60 km/h，則輸入 <code>./start_vehicle.sh 60</code>
+                </p>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">系統自動執行流程</h3>
+            <div class="text-content">
+                <ol class="operation-list numbered">
+                    <li>自動取得事故位置（GPS 定位）</li>
+                    <li>偵測是否有民眾受傷（視覺辨識）</li>
+                    <li>根據道路速限計算安全距離</li>
+                    <li>自動往後移動至安全位置</li>
+                    <li>升起警示牌並啟動 LED 警示燈</li>
+                    <li>上報事故資料至監控中心</li>
+                    <li>開始提供即時影像串流</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">安全距離設定</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    系統會根據您輸入的道路速限自動判斷移動距離：
+                </p>
+                <ul class="operation-list">
+                    <li>高速公路（≥ 100 km/h）：100 公尺</li>
+                    <li>快速道路（> 60 km/h）：80 公尺</li>
+                    <li>城市道路（50-60 km/h）：50 公尺</li>
+                    <li>地方道路（< 50 km/h）：30 公尺</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要功能 -->
+    <section class="content-section">
+        <h2 class="section-title">主要功能</h2>
         <div class="feature-list">
             <div class="feature-item">
-                <h3 class="feature-title">1. 自動定位</h3>
-                <p class="feature-text">透過 GPS 模組自動取得事故位置，並計算移動距離。</p>
+                <h3 class="feature-title">自動定位</h3>
+                <p class="feature-text">GPS 自動取得事故位置，無需手動設定。</p>
             </div>
             <div class="feature-item">
-                <h3 class="feature-title">2. 智能移動</h3>
-                <p class="feature-text">根據道路速限自動判斷目標距離，並在移動過程中進行障礙物偵測與避障。</p>
+                <h3 class="feature-title">智能移動</h3>
+                <p class="feature-text">自動判斷安全距離，並具備障礙物偵測與避障功能。</p>
             </div>
             <div class="feature-item">
-                <h3 class="feature-title">3. 視覺辨識</h3>
-                <p class="feature-text">使用攝影機進行即時影像分析，偵測障礙物與人員，判斷是否有民眾受傷。</p>
+                <h3 class="feature-title">視覺辨識</h3>
+                <p class="feature-text">自動偵測人員與障礙物，判斷是否有民眾受傷。</p>
             </div>
             <div class="feature-item">
-                <h3 class="feature-title">4. 警示系統</h3>
-                <p class="feature-text">到達目標位置後自動升起警示牌，LED 燈條自動啟動，提供視覺警示。</p>
+                <h3 class="feature-title">警示系統</h3>
+                <p class="feature-text">自動升起警示牌，LED 燈條自動啟動，提供視覺警示。</p>
             </div>
             <div class="feature-item">
-                <h3 class="feature-title">5. 資料上報</h3>
-                <p class="feature-text">自動將事故位置、時間、影像與傷亡資訊上報至後端監控系統。</p>
-            </div>
-            <div class="feature-item">
-                <h3 class="feature-title">6. 即時監控</h3>
-                <p class="feature-text">提供即時影像串流，讓後端系統能夠遠端監控事故現場狀況。</p>
+                <h3 class="feature-title">即時監控</h3>
+                <p class="feature-text">自動上報事故資料，提供即時影像串流至監控中心。</p>
             </div>
         </div>
         <div class="image-block">
@@ -71,88 +133,22 @@
         </div>
     </section>
 
-    <!-- 操作與互動說明 -->
+    <!-- 監控系統使用 -->
     <section class="content-section">
-        <h2 class="section-title">操作說明</h2>
-        
-        <div class="operation-section">
-            <h3 class="subsection-title">啟動系統</h3>
-            <div class="text-content">
-                <p class="leading-relaxed">
-                    在樹莓派上執行主程式，系統將自動完成以下流程：
-                </p>
-                <ol class="operation-list">
-                    <li>初始化 GPS 模組並取得事故位置</li>
-                    <li>啟動視覺辨識模組</li>
-                    <li>根據道路速限判斷目標距離</li>
-                    <li>開始往後移動至安全距離</li>
-                    <li>到達目標位置後升起警示牌</li>
-                    <li>LED 燈條自動啟動</li>
-                    <li>上報事故資料至後端系統</li>
-                    <li>開始提供即時影像串流</li>
-                </ol>
-            </div>
-        </div>
-
-        <div class="operation-section">
-            <h3 class="subsection-title">距離設定</h3>
-            <div class="text-content">
-                <p class="leading-relaxed">
-                    系統根據道路速限自動判斷移動距離：
-                </p>
-                <ul class="operation-list">
-                    <li>高速公路（速限 ≥ 100 km/h）：100 公尺</li>
-                    <li>快速道路（速限 > 60 km/h）：80 公尺</li>
-                    <li>城市道路（速限 50-60 km/h）：50 公尺</li>
-                    <li>地方道路（速限 < 50 km/h）：30 公尺</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="operation-section">
-            <h3 class="subsection-title">監控系統</h3>
-            <div class="text-content">
-                <p class="leading-relaxed">
-                    後端監控系統提供以下功能：
-                </p>
-                <ul class="operation-list">
-                    <li>地圖顯示事故位置</li>
-                    <li>即時影像串流</li>
-                    <li>事故列表管理</li>
-                    <li>管理員登入與資料管理</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技術規格 -->
-    <section class="content-section">
-        <h2 class="section-title">技術規格</h2>
-        <div class="spec-grid">
-            <div class="spec-item">
-                <h3 class="spec-label">控制平台</h3>
-                <p class="spec-value">Raspberry Pi 4</p>
-            </div>
-            <div class="spec-item">
-                <h3 class="spec-label">定位系統</h3>
-                <p class="spec-value">GPS NEO-M8 模組</p>
-            </div>
-            <div class="spec-item">
-                <h3 class="spec-label">視覺辨識</h3>
-                <p class="spec-value">OpenCV + YOLO</p>
-            </div>
-            <div class="spec-item">
-                <h3 class="spec-label">馬達控制</h3>
-                <p class="spec-value">L298N 驅動模組</p>
-            </div>
-            <div class="spec-item">
-                <h3 class="spec-label">警示系統</h3>
-                <p class="spec-value">伺服馬達 + LED 燈條</p>
-            </div>
-            <div class="spec-item">
-                <h3 class="spec-label">通訊協定</h3>
-                <p class="spec-value">HTTP REST API</p>
-            </div>
+        <h2 class="section-title">監控系統</h2>
+        <div class="text-content">
+            <p class="leading-relaxed">
+                後端監控系統提供完整的遠端監控功能：
+            </p>
+            <ul class="operation-list">
+                <li>地圖顯示事故位置與即時狀態</li>
+                <li>即時影像串流監控現場狀況</li>
+                <li>事故列表管理與資料查詢</li>
+                <li>管理員登入進行資料管理</li>
+            </ul>
+            <p class="leading-relaxed">
+                開啟監控網頁即可查看所有活動中的事故資訊。
+            </p>
         </div>
     </section>
 
@@ -161,13 +157,44 @@
         <h2 class="section-title">注意事項</h2>
         <div class="text-content">
             <ul class="operation-list">
-                <li>使用前請確認所有硬體連接正確</li>
-                <li>確保 GPS 模組能夠正常定位</li>
+                <li>使用前確認所有硬體連接正確且電源充足</li>
+                <li>確保 GPS 模組能夠正常定位（建議在戶外空曠處使用）</li>
                 <li>檢查攝影機連接與影像品質</li>
-                <li>確認後端伺服器連線正常</li>
-                <li>移動過程中請保持安全距離</li>
-                <li>系統運行時請勿手動干擾</li>
+                <li>確認後端監控系統連線正常</li>
+                <li>移動過程中請保持安全距離，勿靠近移動中的設備</li>
+                <li>系統運行時請勿手動干擾或移動設備</li>
+                <li>使用完畢後請正確關閉系統</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- 常見問題 -->
+    <section class="content-section">
+        <h2 class="section-title">常見問題</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3 class="faq-question">GPS 無法定位怎麼辦？</h3>
+                <p class="faq-answer">請確認設備位於戶外空曠處，等待 1-2 分鐘讓 GPS 完成定位。若仍無法定位，請檢查 GPS 模組連接。</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">系統移動距離不正確？</h3>
+                <p class="faq-answer">請確認輸入的道路速限參數正確。系統會根據速限自動計算安全距離。</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">無法連接到監控系統？</h3>
+                <p class="faq-answer">請確認網路連線正常，並檢查後端伺服器是否正在運行。確認設備與伺服器的連線設定正確。</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">如何停止系統？</h3>
+                <p class="faq-answer">在終端機中按 Ctrl+C 即可安全停止系統。系統會自動停止馬達並降下警示牌。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 詳細說明連結 -->
+    <section class="content-section">
+        <div class="link-section">
+            <a href="technical-details.html" class="btn">查看詳細技術說明</a>
         </div>
     </section>
 
