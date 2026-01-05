@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動安全警示車 - 使用說明</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 封面頁 -->
+    <section class="cover-section">
+        <div class="cover-content">
+            <h1 class="cover-title">自動安全警示車</h1>
+            <div class="cover-divider"></div>
+            <div class="cover-image-placeholder">
+                <img src="images/product-overview.png" alt="自動安全警示車產品示意圖" class="cover-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- 產品理念 -->
+    <section class="content-section">
+        <h2 class="section-title">產品理念</h2>
+        <div class="text-content">
+            <p class="leading-relaxed">
+                當發生交通事故時，系統會自動啟動安全警示流程。裝置將自動往後移動至安全距離，升起警示牌，並將事故資料與即時影像傳送到後端監控系統。
+            </p>
+            <p class="leading-relaxed">
+                透過 GPS 定位、視覺辨識與自動化控制，確保事故現場能夠快速建立安全警示，保護用路人安全。
+            </p>
+        </div>
+        <div class="image-block">
+            <img src="images/usage-scenario.png" alt="使用情境圖" class="content-image">
+        </div>
+    </section>
+
+    <!-- 設計重點說明 -->
+    <section class="content-section">
+        <h2 class="section-title">系統功能</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3 class="feature-title">1. 自動定位</h3>
+                <p class="feature-text">透過 GPS 模組自動取得事故位置，並計算移動距離。</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="feature-title">2. 智能移動</h3>
+                <p class="feature-text">根據道路速限自動判斷目標距離，並在移動過程中進行障礙物偵測與避障。</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="feature-title">3. 視覺辨識</h3>
+                <p class="feature-text">使用攝影機進行即時影像分析，偵測障礙物與人員，判斷是否有民眾受傷。</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="feature-title">4. 警示系統</h3>
+                <p class="feature-text">到達目標位置後自動升起警示牌，LED 燈條自動啟動，提供視覺警示。</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="feature-title">5. 資料上報</h3>
+                <p class="feature-text">自動將事故位置、時間、影像與傷亡資訊上報至後端監控系統。</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="feature-title">6. 即時監控</h3>
+                <p class="feature-text">提供即時影像串流，讓後端系統能夠遠端監控事故現場狀況。</p>
+            </div>
+        </div>
+        <div class="image-block">
+            <img src="images/product-details.png" alt="產品細節圖" class="content-image">
+        </div>
+    </section>
+
+    <!-- 操作與互動說明 -->
+    <section class="content-section">
+        <h2 class="section-title">操作說明</h2>
+        
+        <div class="operation-section">
+            <h3 class="subsection-title">啟動系統</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    在樹莓派上執行主程式，系統將自動完成以下流程：
+                </p>
+                <ol class="operation-list">
+                    <li>初始化 GPS 模組並取得事故位置</li>
+                    <li>啟動視覺辨識模組</li>
+                    <li>根據道路速限判斷目標距離</li>
+                    <li>開始往後移動至安全距離</li>
+                    <li>到達目標位置後升起警示牌</li>
+                    <li>LED 燈條自動啟動</li>
+                    <li>上報事故資料至後端系統</li>
+                    <li>開始提供即時影像串流</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">距離設定</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    系統根據道路速限自動判斷移動距離：
+                </p>
+                <ul class="operation-list">
+                    <li>高速公路（速限 ≥ 100 km/h）：100 公尺</li>
+                    <li>快速道路（速限 > 60 km/h）：80 公尺</li>
+                    <li>城市道路（速限 50-60 km/h）：50 公尺</li>
+                    <li>地方道路（速限 < 50 km/h）：30 公尺</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="operation-section">
+            <h3 class="subsection-title">監控系統</h3>
+            <div class="text-content">
+                <p class="leading-relaxed">
+                    後端監控系統提供以下功能：
+                </p>
+                <ul class="operation-list">
+                    <li>地圖顯示事故位置</li>
+                    <li>即時影像串流</li>
+                    <li>事故列表管理</li>
+                    <li>管理員登入與資料管理</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技術規格 -->
+    <section class="content-section">
+        <h2 class="section-title">技術規格</h2>
+        <div class="spec-grid">
+            <div class="spec-item">
+                <h3 class="spec-label">控制平台</h3>
+                <p class="spec-value">Raspberry Pi 4</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">定位系統</h3>
+                <p class="spec-value">GPS NEO-M8 模組</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">視覺辨識</h3>
+                <p class="spec-value">OpenCV + YOLO</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">馬達控制</h3>
+                <p class="spec-value">L298N 驅動模組</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">警示系統</h3>
+                <p class="spec-value">伺服馬達 + LED 燈條</p>
+            </div>
+            <div class="spec-item">
+                <h3 class="spec-label">通訊協定</h3>
+                <p class="spec-value">HTTP REST API</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 注意事項 -->
+    <section class="content-section">
+        <h2 class="section-title">注意事項</h2>
+        <div class="text-content">
+            <ul class="operation-list">
+                <li>使用前請確認所有硬體連接正確</li>
+                <li>確保 GPS 模組能夠正常定位</li>
+                <li>檢查攝影機連接與影像品質</li>
+                <li>確認後端伺服器連線正常</li>
+                <li>移動過程中請保持安全距離</li>
+                <li>系統運行時請勿手動干擾</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 輔助紋理 -->
+    <div class="texture-overlay"></div>
+</body>
+</html>
